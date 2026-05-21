@@ -1,26 +1,24 @@
-import random
+num_staff = int(input("Nhập số lượng nhân viên: "))
 
-patient_name = input("Nhập tên bệnh nhân: ")
-gender = input("Nhập giới tính: ")
-birth_year = int(input("Nhập năm sinh: "))
-phone = input("Nhập số điện thoại: ")
-email = input("Nhập email: ")
-symptom = input("Nhập triệu chứng ban đầu: ")
-medical_fee = float(input("Nhập chi phí khám: "))
+for i in range(num_staff):
+    full_name = input("Nhập tên nhân viên: ")
+    total_day = int(input("Nhập số ngày làm: "))
 
+    if total_day < 0 or total_day > 22:
+        print("Dữ liệu không hợp lệ!")
+        continue
 
-patient_id = "BN" + str(birth_year) + str(random.randint(100, 999))
+    elif total_day == 0:
+        print("Nhân viên nghỉ toàn bộ tháng")
+        continue
 
-print("\nTHẺ BỆNH NHÂN")
-print("-" * 35)
+    print(full_name + ": " + "*" * total_day)
 
-print("Mã BN        :", patient_id)
-print("Tên          :", patient_name, f"({type(patient_name).__name__})")
-print("Giới tính    :", gender, f"({type(gender).__name__})")
-print("Năm sinh     :", birth_year, f"({type(birth_year).__name__})")
-print("Điện thoại   :", phone, f"({type(phone).__name__})")
-print("Email        :", email, f"({type(email).__name__})")
-print("Triệu chứng  :", symptom, f"({type(symptom).__name__})")
-print("Chi phí      :", medical_fee, "VND", f"({type(medical_fee).__name__})")
+    if total_day >= 18:
+        print("Làm việc chăm chỉ")
 
-print("-" * 35)
+    elif total_day < 10:
+        print("Làm việc ít")
+
+    else:
+        print("Làm việc bình thường")
